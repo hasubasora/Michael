@@ -213,7 +213,7 @@
         return {
             next() {
                 let done = (i >= foods.length);
-                let value = !done ? foodes[i++] : undefined;
+                let value = !done ? foods[i++] : undefined;
 
                 return {
                     value: value,
@@ -231,12 +231,78 @@
 //Generators迭代器
 {
     function* chef(params) {
-        yield 'apple';
-        yield 'apple';
+        yield '苹果';
+        yield '笑';
     }
     let wh = chef();
 
-    console.log(wg.next())
-    console.log(wg.next())
-    console.log(wg.next())
+    console.log(wh.next())
+    console.log(wh.next())
+    console.log(wh.next())
+}
+
+//Generators迭代器
+{
+    function* chef(foods) {
+        for (var i = 0; i < foods.length; i++) {
+            yield foods[i];
+        }
+    }
+    let wh = chef(['1', '2'])
+    console.log(wh.next())
+    console.log(wh.next())
+    console.log(wh.next())
+
+
+}
+//Generators迭代器 表达式
+{
+    let chef = function*(foods) {
+        for (var i = 0; i < foods.length; i++) {
+            yield foods[i];
+        }
+    }
+    let wh = chef(['1', '2'])
+    console.log(wh.next())
+    console.log(wh.next())
+    console.log(wh.next())
+}
+
+
+// 定义类
+
+{
+    class Chef { //创建一个类 
+        constructor(foods) { //添加一个方法 创建实例后会自动执行这个方法初始化的东西放到这
+            this.foods = food;
+            this.dish = [];
+        }
+        get menu() { //得到东西的方法
+            return this.dish;
+        }
+        set menu(dish) { //设置东西的方法
+            this.dish.push(dish)
+        }
+
+        // cook() { //自定义的方法输出
+        //     console.log(this.foods)
+        // }
+
+        // 在类里面静态的方法 不需要实例化就可以使用的方法
+        static cook(foods) {
+            console.log(foods)
+        }
+
+    }
+    // 创建一个实例
+    let kk = new chef('1');
+    kk.cook()
+
+    // 创建一个实例 使用menu这个设置器
+    console.log(kk.menu = '1');
+    console.log(kk.menu = '2');
+    console.log(kk.menu); //输出数组
+
+    // static 在类里面静态的方法 不需要实例化就可以使用的方法
+    Chef.cook('apple'); //传递过去的值直接输出
 }

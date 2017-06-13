@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        'use strict'
+
+        function chef(foods) {
+            let i = 0;
+
+            return {
+                next() {
+                    let done = (i >= foods.length);
+                    let value = !done ? foods[i++] : undefined;
+
+                    return {
+                        value: value,
+                        done: done
+                    }
+                }
+            }
+        }
+        let wg = chef(['xihongsi', 'chaojidan']);
+        console.log(wg.next())
+        console.log(wg.next())
+        console.log(wg.next())
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
