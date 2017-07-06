@@ -306,3 +306,40 @@
     // static 在类里面静态的方法 不需要实例化就可以使用的方法
     Chef.cook('apple'); //传递过去的值直接输出
 }
+
+
+// 名词类的数据结构 对象 map 一个对象里面可以包含多个项目 每个项目都有一个名字 和一个对应的值
+//使用对象可能会有一些限制或者引起冲突 不能用对象作为项目的名字
+
+// 创建一个 map
+let food = new Map();
+let fruit = {}, //对象
+    cook = function() {}, //函数 也可以做位key
+    dessert = '甜点'; //字符串
+
+// 上面的变量food里面表示的map里面的key
+
+// 向里面添加项目 
+// food.set(key项目的名字，val值);
+food.set(fruit, '柠檬'); //Map{Object {}=>"柠檬"}
+food.set(cook, '刀叉'); //Map{Object {}=>"柠檬"，function function=>"刀叉"}
+food.set(dessert, '甜甜圈'); //Map{Object {}=>"柠檬"，function function=>"刀叉","甜点"=>"甜甜圈"}
+
+console.log(food); //map 空对象
+console.log(food.size); // 想知道里面有多少个项目 //3
+console.log(food.get(fruit)); // 得到对应的值
+
+// 删除里面的项目
+food.delete(cook);
+console.log(food.has(cook)); //false
+
+// 循环map里面的东西可以用foreach
+food.forEach((val, key) => {
+    console.log(`${key}=${val}`);
+})
+
+// 清空map
+food.clear();
+
+
+//定义模块module
