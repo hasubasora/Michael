@@ -1,6 +1,6 @@
 /**
  *@param ele 传入的第一个对象 a 
- *@param window等系统变量在插件内部就有了一个局部的引用，可以提高访问速度，会有些许性能的提升
+ *@param window 等系统变量在插件内部就有了一个局部的引用，可以提高访问速度，会有些许性能的提升
  */
 ;
 (function($, window, document, undefined) {

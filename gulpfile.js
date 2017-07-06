@@ -11,6 +11,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
     jshint = require('gulp-jshint'),
+    babel = require('gulp-babel'),
     autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('default', ['jshint'], function() {
@@ -80,13 +81,22 @@ gulp.task('compass', function() {
 //合并压缩js
 gulp.task('minifyjs', function() {
     return gulp.src('./src/javascripts*/**/*.js') //js代码校验
+        .pipe(babel({
+            presets: ['es2015']
+        }))
         .pipe(concat('main.js')) //js代码合并 main.js
         .pipe(gulp.dest('./dist/javascripts/')) //整合后的输出路径
-        .pipe(rename({ suffix: '.min' })) ////给文件添加.min后缀
+        .pipe(rename({
+            suffix: '.min'
+        })) ////给文件添加.min后缀
         .pipe(ngAnnotate())
-        .pipe(ngmin({ dynamic: false })) //Pre-minify AngularJS apps with ngmin
+        .pipe(ngmin({
+            dynamic: false
+        })) //Pre-minify AngularJS apps with ngmin
         .pipe(stripDebug()) //除去js代码中的console和debugger输出
-        .pipe(uglify({ outSourceMap: false })) //压缩脚本文件
+        .pipe(uglify({
+            outSourceMap: false
+        })) //压缩脚本文件
         .pipe(gulp.dest('./dist/javascripts/')); //输出压缩文件到指定目录
 });
 
