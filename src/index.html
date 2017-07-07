@@ -112,16 +112,72 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
             <h4>{{standard}}:</h4>
             <div class="col-lg-3">
-                <div class="col-lg-12" v-for="(goods,index) in goodsStandard">
-                    <label><input v-bind:name=goods.name @click="nextInput(index,goods.fish)" type="checkbox" v-model="goods.fish" class="ace"><span class="lbl"><input value="" type="text" v-bind:placeholder=goods.name ></span></label>
+                <div class="col-lg-12 " v-for="(goods,index) in goodsStandard">
+                    <label><input v-bind:name=goods.name @click="nextInput(index,goods.fish)" type="checkbox" v-model="goods.fish" class="ace"><span class="lbl"><input value=""  class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=goods.name ></span></label>
                 </div>
             </div>
             <div class="col-lg-9">
-                <div class="col-lg-12" v-for="(goods,index) in goodsStandard">
-                    <label><input  v-bind:name=goods.name @click="nextInput(index,goods.fish)" type="checkbox" v-model="goods.fish" class="ace"><span class="lbl"><input value="" class="form-control" type="text" v-bind:placeholder=goods.name ></span></label>
+                <div class="col-xs-2" v-for="(goods,index) in 10">
+                    <label><input  v-bind:name=goods.name @click="nextInput(index,goods.fish)" type="checkbox" v-model="goods.fish" class="ace"><span class="lbl"><input value="" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=goods.name ></span></label>
                 </div>
             </div>
+
+
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <table class="table table-condensed table-striped table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th>规格1</th>
+                            <th>规格2</th>
+                            <th>规格3</th>
+                            <th>规格4</th>
+                            <th class="text-center">零售价(元)</th>
+                            <th class="text-center">成本价(元)</th>
+                            <th class="text-center">库存</th>
+                            <th>缩略图</th>
+                            <th>商品编码</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+
+                            <td class="col-xs-1">
+                                <input type="text" name="" class="form-control input-sm" value="">
+                            </td>
+                            <td class="col-xs-1">
+
+                                <input type="text" name="" class="form-control input-sm" value="">
+                            </td>
+                            <td class="col-xs-1">
+                                <input type="text" name="" class="form-control input-sm" value="">
+                            </td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+
+
         <h3>{{titleAll[2]}} <span class="glyphicon glyphicon glyphicon-tags"></span></h3>
         <h3>{{titleAll[3]}} <span class="glyphicon glyphicon glyphicon-tags"></span></h3>
         <h3>{{titleAll[4]}} <span class="glyphicon glyphicon glyphicon-tags"></span></h3>
