@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="framework/bootstrap.min.css">
+    <script type="text/javascript" src="framework/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="framework/vue.js"></script>
+    <script type="text/javascript" src="framework/bootstrap.min.js"></script>
+    <script src="javascripts/app.js"></script>
+    <title>vuejs</title>
+    <script>
+        window.onload = function() {
+            var agumon = new Vue({
+                el: '#app', //id 在这个盒子里面才能操作下面的东西
+                data: { //数据
+                    message: 'Hello Vue!',
+                    msg: '哈哈哈',
+                    foot: false,
+                    checked: false,
+                    titleAll: ['商品信息', '商品规格', '商品主图', '商品详情', '客户价格设置'],
+                    goodsMsg: ['商品名称', '商品类型', '商品单位', '品牌', '描述'],
+                    msgKey: ['', '', '', '', ''],
+                    msgType: ['Action', 'Action', 'Action', 'Action'],
+                    iCss: 'line-height:35px;',
+                    standard: ['规格', '属性'],
+                    goodsStandard: [{
+                        name: 'standard',
+                        fish: false,
+                        val: '',
+                        title: '自定义规格'
+                    }, {
+                        name: 'color',
+                        fish: false,
+                        val: '',
+                        title: '例如：颜色'
+                    }, {
+                        name: 'size',
+                        fish: false,
+                        val: '',
+                        title: '例如：尺寸'
+                    }, {
+                        name: 'goodsBody',
+                        fish: false,
+                        val: '',
+                        title: '例如：品种'
+                    }],
+                    otable: ['零售价(元)', '成本价(元)', '库存', '缩略图', '商品编码', '操作'],
+                    otableGoods: [{ //第一个子
+                        name: 'standOne',
+                        fish: false,
+                        val: '',
+                        childColors: '',
+                        childSize: '',
+                        childBody: ''
+                    }, {
+                        name: 'standOne',
+                        fish: false,
+                        val: '',
+                        childColors: '',
+                        childSize: '',
+                        childBody: ''
+                    }],
+
+                    json: {
+                        name: 'standOne',
+                        fish: false,
+                        val: '',
+                        childColors: ''
+                    },
+                    todos: [{
+                        text: 'Learn JavaScript'
+                    }, {
+                        text: 'Learn Vue'
+                    }, {
+                        text: 'Build something awesome'
+                    }],
+
+
+                },
+                computed: {
+                    titleLen() {
+                        return this.msgKey[0].length;
+                    },
+                    titleLen2() {
+                        return this.msgKey[2].length;
+                    },
+                    titleLen3() {
+                        return this.msgKey[3].length;
+                    },
+                    titleLen4() {
+                        return this.msgKey[4].length;
+                    },
+                    titleLen5() {
+                        return this.msgKey[5].length;
+                    },
+                },
+                methods: { //事件操作
+
+                    add: function() {
+                        this.arr.push('message');
+                    },
+                    nextInput(is, os) {
+                        console.info(is, os, this.goodsStandard.length);
+                        console.info(this.msgKey[0]);
+                        console.info(this.goodsStandard[0].val);
+
+                        console.info(!this.goodsStandard[0].val);
+                        if (this.goodsStandard[0].val && os) {
+                            console.info('！')
+                        } else {
+                            console.info('输入啊！')
+                        }
+                        // if (os == true) {
+                        //     if (this.goodsStandard.length >= 2) {
+                        //         this.goodsStandard.splice(is, 1)
+                        //         console.info('都不做')
+                        //     } else {
+                        //         this.goodsStandard.push(this.goodsColor)
+                        //     }
+                        // }
+                        // if (os == false) {
+                        //     this.goodsStandard.splice(is + 1, 1)
+                        //     console.info('什么都不做')
+                        // }
+                    },
+                    nextGoods() {
+                        console.info(this.otableGoods[0].val)
+                        if (!this.otableGoods[0].val) {
+                            console.info('！')
+                        } else {
+                            console.info('输入啊!!！')
+                        }
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <div id="app" class="container">
+        <h3>{{titleAll[0]}} <span class="glyphicon glyphicon glyphicon-tags"></span></h3>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <form class="form-horizontal">
+                <div class="form-group" v-for="(item,index) in goodsMsg">
+                    <!--表单-->
+                    <label for="inputEmail" class="col-sm-2 control-label">{{item}}</label>
+                    <div class="col-sm-9" v-if=index!=1>
+                        <input type="text" class="form-control" v-model="msgKey[index]" id="inputEmail" placeholder=''>
+                    </div>
+                    <div class="col-sm-1" v-if="index!=1" :style=iCss>
+                        <div v-if="index==0">
+                            {{titleLen}}/30
+                        </div>
+                        <div v-if="index==2">
+                            {{titleLen2}}/5
+                        </div>
+                        <div v-if="index==3">
+                            {{titleLen3}}/10
+                        </div>
+                        <div v-if="index==4">
+                            {{titleLen4}}/100
+                        </div>
+                    </div>
+
+                    <!--下拉框-->
+                    <div class="dropdown col-sm-10" v-if=index==1>
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Dropdown <span class="caret"></span></button>
+                        <ul class="dropdown-menu" v-for="(itemMsg,index) in msgType" aria-labelledby="dropdownMenu1">
+                            <li>
+                                <a href="#">{{itemMsg}}</a>
+                            </li>
+                            <li><a href="#"> action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!--第二部分-->
+        <h3>{{titleAll[1]}} <span class="glyphicon glyphicon glyphicon-tags"></span></h3>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+
+            <div class="col-lg-3">
+                <h4>{{standard[0]}}:</h4>
+                <!--v-model="goods.fish"-->
+                <div class="col-lg-12 " v-for="(goods,index) in goodsStandard">
+                    <label><input v-bind:name=goods.name v-show="false" @click="nextInput(index,goods.fish)" v-model="goods.fish" type="checkbox" class="ace"><span class="lbl">
+                    <input v-model="goods.val" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=goods.title></span>
+                    </label>
+                </div>
+            </div>
+            <!--子商品-->
+
+            <div class="col-lg-9">
+                <h4>{{standard[1]}}:</h4>
+                <div class="col-lg-12">
+                    <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
+                        <label><input  v-bind:name=tbs.name v-show="false" @click="nextGoods(index,tbs.fish)" type="checkbox" v-model="tbs.fish" class="ace"><span class="lbl"><input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.val" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.name ></span></label>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
+                        <label><input  v-bind:name=tbs.name v-show="false" @click="nextGoods(index,tbs.fish)" type="checkbox" v-model="tbs.fish" class="ace"><span class="lbl"><input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.childColors" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.name ></span></label>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
+                        <label><input  v-bind:name=tbs.name v-show="false" @click="nextGoods(index,tbs.fish)" type="checkbox" v-model="tbs.fish" class="ace"><span class="lbl"><input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.childSize" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.name ></span></label>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
+                        <label><input  v-bind:name=tbs.name v-show="false" @click="nextGoods(index,tbs.fish)" type="checkbox" v-model="tbs.fish" class="ace"><span class="lbl"><input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.childBody" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.name ></span></label>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--table-->
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <table class="table table-condensed table-striped table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th v-if="goodsStandard[0].val">{{goodsStandard[0].val}}</th>
+                            <th v-if="goodsStandard[1].val">{{goodsStandard[1].val}}</th>
+                            <th v-if="goodsStandard[2].val">{{goodsStandard[2].val}}</th>
+                            <th v-if="goodsStandard[3].val">{{goodsStandard[3].val}}</th>
+                            <th v-for="tab in otable" class="text-center">{{tab}}</th>
+                        </tr>
+                    </thead>
+                    <tbody v-if="otableGoods[0].val!=''||otableGoods.lenth>2">
+                        <tr v-for="(otableGs,index) in otableGoods">
+                            <td scope="row">{{otableGs.val}}</td>
+                            <td>{{otableGs.childColors}}</td>
+                            <td>{{otableGs.childSize}}</td>
+                            <td>{{otableGs.childBody}}</td>
+
+
+                            <td class="col-xs-1">
+                                <input type="text" name="" class="form-control input-sm" value="">
+                            </td>
+                            <td class="col-xs-1">
+
+                                <input type="text" name="" class="form-control input-sm" value="">
+                            </td>
+                            <td class="col-xs-1">
+                                <input type="text" name="" class="form-control input-sm" value="">
+                            </td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+        <h3>{{titleAll[2]}} <span class="glyphicon glyphicon glyphicon-tags"></span></h3>
+        <h3>{{titleAll[3]}} <span class="glyphicon glyphicon glyphicon-tags"></span></h3>
+        <h3>{{titleAll[4]}} <span class="glyphicon glyphicon glyphicon-tags"></span></h3>
+
+        <!--按钮-->
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">提交保存</button>
+            </div>
+        </div>
+
+        <input type="text" v-model='message'> <br>{{ message }}<br>
+        <input type="text" v-model='msg'>
+
+
+
+
+        <!--点击隐藏显示 v-show="true/false"  点击按钮把data里面的变量改变就可以-->
+        <!--<input type="button" value="显示" v-on:click="msg1=true">
+        <div v-show="msg1" style="border:1px solid red; width:30px;height:30px;"></div>-->
+    </div>
+
+</body>
+
+
+</html>
