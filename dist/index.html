@@ -12,183 +12,7 @@
     <script type="text/javascript" src="framework/bootstrap.min.js"></script>
     <script src="javascripts/app.js"></script>
     <title>vuejs</title>
-    <script>
-        window.onload = function() {
-            var agumon = new Vue({
-                el: '#app', //id 在这个盒子里面才能操作下面的东西
-                data: { //数据
-                    message: 'Hello Vue!',
-                    msg: '哈哈哈',
-                    foot: false,
-                    checked: false,
-                    titleAll: ['商品信息', '商品规格', '商品主图', '商品详情', '客户价格设置'],
-                    goodsMsg: ['商品名称', '商品类型', '商品单位', '品牌', '描述'],
-                    msgKey: ['', '', '', '', ''],
-                    msgType: ['Action', 'Action', 'Action', 'Action'],
-                    iCss: 'line-height:35px;',
-                    standard: ['规格', '属性'],
-                    goodsStandard: [{
-                        name: 'standard',
-                        fish: false,
-                        val: '',
-                        title: '自定义规格'
-                    }, {
-                        name: 'color',
-                        fish: false,
-                        val: '',
-                        title: '例如：颜色'
-                    }, {
-                        name: 'size',
-                        fish: false,
-                        val: '',
-                        title: '例如：尺寸'
-                    }, {
-                        name: 'goodsBody',
-                        fish: false,
-                        val: '',
-                        title: '例如：品种'
-                    }],
-                    otable: ['零售价(元)', '成本价(元)', '库存', '缩略图', '商品编码', '操作'],
-                    otableGoods: [{
-                        name: 'standOne',
-                        fish: false,
-                        msg: '红色等...',
-                        val: '',
-                        childColors: '',
-                        childSize: '',
-                        childBody: ''
-                    }, ],
-                    addOtbGoods: { //add table goods 
-                        name: 'standOne',
-                        fish: false,
-                        msg: '',
-                        val: '',
-                        childColors: '',
-                        childSize: '',
-                        childBody: ''
-                    },
-                    json: {
-                        name: 'standOne',
-                        fish: false,
-                        val: '',
-                        childColors: ''
-                    },
-                    todos: [{
-                        text: 'Learn JavaScript'
-                    }, {
-                        text: 'Learn Vue'
-                    }, {
-                        text: 'Build something awesome'
-                    }],
-                    oimg: ['../framework/lg.jpg', '../framework/lg.jpg', '../framework/lg.jpg'],
-                    childOne: false, //状态1
-                    childTwo: false, //状态2
-                    childThree: false, //状态3
-                    childfour: false, //状态4
 
-                },
-                computed: {
-                    titleLen() {
-                        return this.msgKey[0].length;
-                    },
-                    titleLen2() {
-                        return this.msgKey[2].length;
-                    },
-                    titleLen3() {
-                        return this.msgKey[3].length;
-                    },
-                    titleLen4() {
-                        return this.msgKey[4].length;
-                    },
-                    titleLen5() {
-                        return this.msgKey[5].length;
-                    },
-                },
-                methods: { //事件操作
-
-                    add: function() {
-                        this.arr.push('message');
-                    },
-                    nextInput(is, os) {
-                        console.info(is, os, this.goodsStandard.length);
-                        console.info(this.msgKey[0]);
-                        console.info(this.goodsStandard[0].val);
-
-                        console.info(!this.goodsStandard[0].val);
-                        if (this.goodsStandard[0].val && os) {
-                            // console.info('！')
-                        } else {
-                            // console.info('输入啊！')
-                        }
-                        // if (os == true) {
-                        //     if (this.goodsStandard.length >= 2) {
-                        //         this.goodsStandard.splice(is, 1)
-                        //         console.info('都不做')
-                        //     } else {
-                        //         this.goodsStandard.push(this.goodsColor)
-                        //     }
-                        // }
-                        // if (os == false) {
-                        //     this.goodsStandard.splice(is + 1, 1)
-                        //     console.info('什么都不做')
-                        // }
-                    },
-                    keyInput(i, v, t) { // 规格状态改变
-                        console.log(i, v, t, this.otableGoods.length)
-                        if (v != '' && i == 0) {
-                            if (this.childOne == false) {
-                                this.otPush()
-                                this.childOne = true;
-                            }
-                        } else if (v == '') {
-                            if (this.childOne == true) {
-                                this.otableGoods.splice(i, 1)
-                                this.childOne = false;
-                            }
-                        }
-                        console.log(this.otableGoods)
-
-                        if (v != '' && i == 1) {
-                            if (this.childTwo == false) {
-                                this.otPush()
-                                this.childTwo = true;
-                            }
-                        } else if (v == '') {
-                            if (this.childTwo == true) {
-                                this.otableGoods.splice(i, 1)
-                                this.childTwo = false;
-                            }
-
-                        }
-                        // if (v != '' && i == 2) {
-                        //     this.childThree = true;
-                        //     // this.otableGoods.push(this.addOtbGoods)
-                        // } else {
-                        //     this.childOne = false;
-                        // }
-                        // if (v != '' && i == 3) {
-                        //     this.childfour = true;
-                        //     // this.otableGoods.push(this.addOtbGoods)
-                        // } else {
-                        //     this.childOne = false;
-                        // }
-
-                    },
-                    otPush() {
-                        this.otableGoods.push(this.addOtbGoods)
-                    },
-                    nextGoods() {
-                        console.info(this.otableGoods[0].val)
-                        if (!this.otableGoods[0].val) {
-                            console.info('！')
-                        } else {
-                            console.info('输入啊!!！')
-                        }
-                    }
-                }
-            })
-        }
-    </script>
 </head>
 
 <body>
@@ -240,11 +64,12 @@
 
             <div class="col-lg-3">
                 <h4>{{standard[0]}}:</h4>
+                <!--规格-->
                 <!--v-model="goods.fish"-->
                 <div class="col-lg-12 " v-for="(goods,index) in goodsStandard">
                     <label><input v-bind:name=goods.name v-show="false" @click="nextInput(index,goods.fish)" v-model="goods.fish" type="checkbox" class="ace"><span class="lbl">
-
-                    <input v-model="goods.val" class="form-control col-xs-2 input-sm" @keyup="keyInput(index,goods.val,goods.fish)" maxlength="5" type="text" v-bind:placeholder=goods.title :disabled="index>1? true: false"></span> </label>
+<!--:disabled="index>1? true: false"-->
+                    <input v-model="goods.val" class="form-control col-xs-2 input-sm" @keyup="keyInput(index,goods.val,goods.fish)" maxlength="5" type="text" v-bind:placeholder=goods.title ></span></label>
                 </div>
             </div>
             <!--子商品-->
@@ -254,36 +79,36 @@
 
                 <div class="col-lg-12">
                     <!--第一个尺寸-->
-                    <div class="col-lg-12" v-if="childOne">
-                        <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
-                            <label><input v-bind:name=tbs.name v-show="false" @click="nextInput(index,tbs.fish)" v-model="tbs.fish" type="checkbox" class="ace"><span class="lbl">
-                            <input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.val" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.msg></span></label>
+                    <div class="col-lg-12" v-if="childOne" style="border:1px solid red">
+                        <div class="col-xs-2" v-for="(otables,index) in otableGoods">
+                            <label><input v-bind:name=otables.name v-show="false" @click="nextInput(index,otables.fish)" v-model="otables.fish" type="checkbox" class="ace"><span class="lbl">
+                            <input @keyup="nextGoods(index,otables.fish)" v-model="childSet[index]" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=otables.msg></span></label>
                         </div>
                     </div>
                     <!--第二个尺寸-->
-                    <div class="col-lg-12" v-if="childTwo">
-                        <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
-                            <label><input v-bind:name=tbs.name v-show="false" @click="nextInput(index,tbs.fish)" v-model="tbs.fish" type="checkbox" class="ace"><span class="lbl">
+                    <div class="col-lg-12" v-if="childTwo" style="border:1px solid red">
+                        <div class="col-xs-2" v-for="(colors,index) in otableGoods">
+                            <label><input v-show="false" type="checkbox" class="ace"><span class="lbl">
 
-                            <input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.childColors" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.name></span></label>
+                            <input @keyup="nextGoods(index)" v-model="childColors[index]" class="form-control col-xs-2 input-sm" type="text" ></span></label>
 
                         </div>
                     </div>
                     <!--第三个尺寸-->
-                    <div class="col-lg-12" v-if="childThree">
-                        <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
-                            <label><input v-bind:name=tbs.name v-show="false" @click="nextInput(index,tbs.fish)" v-model="tbs.fish" type="checkbox" class="ace"><span class="lbl">
+                    <div class="col-lg-12" v-if="childThree" style="border:1px solid red">
+                        <div class="col-xs-2" v-for="(otables,index) in otableGoods">
+                            <label><input v-show="false" type="checkbox" class="ace"><span class="lbl">
 
-                            <input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.childSize" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.name></span></label>
+                            <input @keyup="nextGoods(index,otables.fish)" v-model="childSize[index]" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=otables.name></span></label>
                             </label>
                         </div>
                     </div>
                     <!--第四个尺寸-->
-                    <div class="col-lg-12" v-if="childfour">
-                        <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
-                            <label><input v-bind:name=tbs.name v-show="false" @click="nextInput(index,tbs.fish)" v-model="tbs.fish" type="checkbox" class="ace"><span class="lbl">
+                    <div class="col-lg-12" v-if="childfour" style="border:1px solid red">
+                        <div class="col-xs-2" v-for="(otables,index) in otableGoods">
+                            <label><input v-show="false" type="checkbox" class="ace"><span class="lbl">
 
-                            <input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.childBody" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.name></span></label>
+                            <input @keyup="nextGoods(index,otables.fish)" v-model="childBody[index]" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=otables.name></span></label>
                         </div>
                     </div>
                 </div>
@@ -303,15 +128,16 @@
                             <th v-for="tab in otable" class="text-center">{{tab}}</th>
                         </tr>
                     </thead>
-                    <tbody v-if="otableGoods[0].val!=''||otableGoods.lenth>2">
+                    <tbody>
+                        <!--v-if="otableGoods.lenth>0"-->
                         <tr v-for="(otableGs,index) in otableGoods">
-                            <td scope="row">{{otableGs.val}}</td>
-                            <td>{{otableGs.childColors}}</td>
-                            <td>{{otableGs.childSize}}</td>
-                            <td>{{otableGs.childBody}}</td>
+                            <td :class='otableGs.name'>{{childSet[index]}}</td>
+                            <td v-if="childTwo">{{childColors[index]}}</td>
+                            <td v-if="childThree">{{childSize[index]}}</td>
+                            <td v-if="childfour">{{childBody[index]}}</td>
 
                             <td class="col-xs-1">
-                                <input type="text" name="" class="form-control input-sm" value="">
+                                <input type="text" name="index" class="form-control input-sm" value="">
                             </td>
                             <td class="col-xs-1">
 
