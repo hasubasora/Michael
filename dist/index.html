@@ -49,22 +49,24 @@
                         title: '例如：品种'
                     }],
                     otable: ['零售价(元)', '成本价(元)', '库存', '缩略图', '商品编码', '操作'],
-                    otableGoods: [{ //第一个子
+                    otableGoods: [{
                         name: 'standOne',
                         fish: false,
+                        msg: '红色等...',
                         val: '',
                         childColors: '',
                         childSize: '',
                         childBody: ''
-                    }, {
+                    }, ],
+                    addOtbGoods: { //add table goods 
                         name: 'standOne',
                         fish: false,
+                        msg: '',
                         val: '',
                         childColors: '',
                         childSize: '',
                         childBody: ''
-                    }],
-
+                    },
                     json: {
                         name: 'standOne',
                         fish: false,
@@ -78,7 +80,11 @@
                     }, {
                         text: 'Build something awesome'
                     }],
-
+                    oimg: ['../framework/lg.jpg', '../framework/lg.jpg', '../framework/lg.jpg'],
+                    childOne: false, //状态1
+                    childTwo: false, //状态2
+                    childThree: false, //状态3
+                    childfour: false, //状态4
 
                 },
                 computed: {
@@ -110,9 +116,9 @@
 
                         console.info(!this.goodsStandard[0].val);
                         if (this.goodsStandard[0].val && os) {
-                            console.info('！')
+                            // console.info('！')
                         } else {
-                            console.info('输入啊！')
+                            // console.info('输入啊！')
                         }
                         // if (os == true) {
                         //     if (this.goodsStandard.length >= 2) {
@@ -126,6 +132,50 @@
                         //     this.goodsStandard.splice(is + 1, 1)
                         //     console.info('什么都不做')
                         // }
+                    },
+                    keyInput(i, v, t) { // 规格状态改变
+                        console.log(i, v, t, this.otableGoods.length)
+                        if (v != '' && i == 0) {
+                            if (this.childOne == false) {
+                                this.otPush()
+                                this.childOne = true;
+                            }
+                        } else if (v == '') {
+                            if (this.childOne == true) {
+                                this.otableGoods.splice(i, 1)
+                                this.childOne = false;
+                            }
+                        }
+                        console.log(this.otableGoods)
+
+                        if (v != '' && i == 1) {
+                            if (this.childTwo == false) {
+                                this.otPush()
+                                this.childTwo = true;
+                            }
+                        } else if (v == '') {
+                            if (this.childTwo == true) {
+                                this.otableGoods.splice(i, 1)
+                                this.childTwo = false;
+                            }
+
+                        }
+                        // if (v != '' && i == 2) {
+                        //     this.childThree = true;
+                        //     // this.otableGoods.push(this.addOtbGoods)
+                        // } else {
+                        //     this.childOne = false;
+                        // }
+                        // if (v != '' && i == 3) {
+                        //     this.childfour = true;
+                        //     // this.otableGoods.push(this.addOtbGoods)
+                        // } else {
+                        //     this.childOne = false;
+                        // }
+
+                    },
+                    otPush() {
+                        this.otableGoods.push(this.addOtbGoods)
                     },
                     nextGoods() {
                         console.info(this.otableGoods[0].val)
@@ -193,34 +243,51 @@
                 <!--v-model="goods.fish"-->
                 <div class="col-lg-12 " v-for="(goods,index) in goodsStandard">
                     <label><input v-bind:name=goods.name v-show="false" @click="nextInput(index,goods.fish)" v-model="goods.fish" type="checkbox" class="ace"><span class="lbl">
-                    <input v-model="goods.val" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=goods.title></span>
-                    </label>
+
+                    <input v-model="goods.val" class="form-control col-xs-2 input-sm" @keyup="keyInput(index,goods.val,goods.fish)" maxlength="5" type="text" v-bind:placeholder=goods.title :disabled="index>1? true: false"></span> </label>
                 </div>
             </div>
             <!--子商品-->
 
             <div class="col-lg-9">
                 <h4>{{standard[1]}}:</h4>
+
                 <div class="col-lg-12">
-                    <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
-                        <label><input  v-bind:name=tbs.name v-show="false" @click="nextGoods(index,tbs.fish)" type="checkbox" v-model="tbs.fish" class="ace"><span class="lbl"><input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.val" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.name ></span></label>
+                    <!--第一个尺寸-->
+                    <div class="col-lg-12" v-if="childOne">
+                        <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
+                            <label><input v-bind:name=tbs.name v-show="false" @click="nextInput(index,tbs.fish)" v-model="tbs.fish" type="checkbox" class="ace"><span class="lbl">
+                            <input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.val" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.msg></span></label>
+                        </div>
+                    </div>
+                    <!--第二个尺寸-->
+                    <div class="col-lg-12" v-if="childTwo">
+                        <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
+                            <label><input v-bind:name=tbs.name v-show="false" @click="nextInput(index,tbs.fish)" v-model="tbs.fish" type="checkbox" class="ace"><span class="lbl">
+
+                            <input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.childColors" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.name></span></label>
+
+                        </div>
+                    </div>
+                    <!--第三个尺寸-->
+                    <div class="col-lg-12" v-if="childThree">
+                        <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
+                            <label><input v-bind:name=tbs.name v-show="false" @click="nextInput(index,tbs.fish)" v-model="tbs.fish" type="checkbox" class="ace"><span class="lbl">
+
+                            <input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.childSize" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.name></span></label>
+                            </label>
+                        </div>
+                    </div>
+                    <!--第四个尺寸-->
+                    <div class="col-lg-12" v-if="childfour">
+                        <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
+                            <label><input v-bind:name=tbs.name v-show="false" @click="nextInput(index,tbs.fish)" v-model="tbs.fish" type="checkbox" class="ace"><span class="lbl">
+
+                            <input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.childBody" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.name></span></label>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
-                        <label><input  v-bind:name=tbs.name v-show="false" @click="nextGoods(index,tbs.fish)" type="checkbox" v-model="tbs.fish" class="ace"><span class="lbl"><input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.childColors" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.name ></span></label>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
-                        <label><input  v-bind:name=tbs.name v-show="false" @click="nextGoods(index,tbs.fish)" type="checkbox" v-model="tbs.fish" class="ace"><span class="lbl"><input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.childSize" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.name ></span></label>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="col-xs-2" v-for="(tbs,index) in otableGoods">
-                        <label><input  v-bind:name=tbs.name v-show="false" @click="nextGoods(index,tbs.fish)" type="checkbox" v-model="tbs.fish" class="ace"><span class="lbl"><input @keyup="nextGoods(index,tbs.fish)" v-model="tbs.childBody" class="form-control col-xs-2 input-sm" type="text" v-bind:placeholder=tbs.name ></span></label>
-                    </div>
-                </div>
+
 
             </div>
 
@@ -242,7 +309,6 @@
                             <td>{{otableGs.childColors}}</td>
                             <td>{{otableGs.childSize}}</td>
                             <td>{{otableGs.childBody}}</td>
-
 
                             <td class="col-xs-1">
                                 <input type="text" name="" class="form-control input-sm" value="">
@@ -267,7 +333,25 @@
 
 
 
+        <!--图片部分-->
         <h3>{{titleAll[2]}} <span class="glyphicon glyphicon glyphicon-tags"></span></h3>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="col-lg-11 col-md-11 col-sm-11 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+                <!--<div class="col-lg-4 col-md-4 col-sm-4">
+                    <img src="../framework/logo.jpg" alt="../framework/logo.jpg" width="140" class="img-rounded"></div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <img src="../framework/lg.jpg" alt="../framework/lg.jpg" width="140" class="img-circle"></div>-->
+
+                <div class="col-lg-2 col-md-2 col-sm-2" v-for="imgs in oimg">
+                    <img :src=imgs width="145" class="img-thumbnail">
+                    <input type="file" name="" id="" class="hidden">
+                    <button type="button" class="btn btn-default btn-xs btn-block">上传图片</button>
+                    <button type="button" class="btn btn-danger btn-xs btn-block">删除图片</button>
+                </div>
+
+            </div>
+        </div>
+
         <h3>{{titleAll[3]}} <span class="glyphicon glyphicon glyphicon-tags"></span></h3>
         <h3>{{titleAll[4]}} <span class="glyphicon glyphicon glyphicon-tags"></span></h3>
 
