@@ -59,10 +59,44 @@
 .boxbtn {
     margin-top: 60px;
     transform: rotate(45deg);
-     transform: rotate(435deg);
+    transform: rotate(435deg);
 }
 
 @keyframes onr {
-from{ left: 0;}
-to{left: -440px}
+    from {
+        left: 0;
+    }
+    to {
+        left: -440px
+    }
+}
+
+.wx-box {
+    width: 50%;
+    margin: 0 auto;
+    .wx-s {
+        position: relative;
+        top: -0.9em;
+        padding: 0 .55em;
+        background-color: #fff;
+        color: #999999;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .wx-hold {
+        font-weight: 800;
+        font-size: 20px;
+        color: #111;
+    }
+}
+
+.weui-grid__icon {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.weui-btn_mini {
+    display: block;
+    margin-top: .6rem;
 }

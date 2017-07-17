@@ -125,7 +125,8 @@ a:hover {
   -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
+html,
+body {
   font-family: "微软雅黑";
   font-size: 100%;
   width: 100%;
@@ -144,8 +145,10 @@ html *:after {
   transition: 0.1s;
 }
 
-html i, html em,
-html b, html strong,
+html i,
+html em,
+html b,
+html strong,
 html span {
   -webkit-transition: none;
   transition: none;
@@ -174,16 +177,10 @@ html span {
 a {
   text-decoration: none;
   color: #555;
-  -webkit-box-shadow: 0px 5px -2px 0px #333;
-  box-shadow: 0px 5px -2px 0px #333;
-}
-a:active {
-  color: #dedede;
-  -webkit-box-shadow: 0px 1px 1px 0px #333;
-  box-shadow: 0px 1px 1px 0px #333;
 }
 
-button, input[type=button] {
+button,
+input[type=button] {
   outline: none;
   border: none;
   cursor: pointer;
@@ -311,4 +308,33 @@ img {
   to {
     left: -440px;
   }
+}
+.wx-box {
+  width: 50%;
+  margin: 0 auto;
+}
+.wx-box .wx-s {
+  position: relative;
+  top: -0.9em;
+  padding: 0 .55em;
+  background-color: #fff;
+  color: #999999;
+  display: inline-block;
+  vertical-align: middle;
+}
+.wx-box .wx-hold {
+  font-weight: 800;
+  font-size: 20px;
+  color: #111;
+}
+
+.weui-grid__icon {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.weui-btn_mini {
+  display: block;
+  margin-top: .6rem;
 }
