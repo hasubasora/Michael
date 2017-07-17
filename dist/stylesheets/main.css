@@ -179,6 +179,16 @@ a {
   color: #555;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 button,
 input[type=button] {
   outline: none;
@@ -317,7 +327,7 @@ img {
   position: relative;
   top: -0.9em;
   padding: 0 .55em;
-  background-color: #fff;
+  background-color: #f9f9f9;
   color: #999999;
   display: inline-block;
   vertical-align: middle;
@@ -326,6 +336,18 @@ img {
   font-weight: 800;
   font-size: 20px;
   color: #111;
+}
+
+.weui-grids {
+  background: white;
+}
+
+.weui-loadmore__tips {
+  background: #f9f9f9 !important;
+}
+
+.weui-search-bar__label {
+  top: 4px;
 }
 
 .weui-grid__icon {
@@ -337,4 +359,12 @@ img {
 .weui-btn_mini {
   display: block;
   margin-top: .6rem;
+}
+
+.iconfont {
+  font-size: 1.6rem !important;
+}
+
+.green {
+  color: #09BB07;
 }
