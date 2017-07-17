@@ -174,6 +174,7 @@
                   console.info(this.childSet[i], i)
                   if (this.childSet[i]) {
                       console.info('初めまして')
+                      this.otPush()
                   } else {
                       console.info('输入啊!!！')
                   }
