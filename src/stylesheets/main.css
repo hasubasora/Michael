@@ -312,7 +312,7 @@ img {
   }
 }
 .wx-box {
-  width: 50%;
+  width: 105px;
   margin: 0 auto;
 }
 .wx-box .wx-s {
@@ -350,7 +350,11 @@ img {
 
 .weui-btn_mini {
   display: block;
-  margin-top: .6rem;
+}
+
+.ps {
+  margin: .6rem 0;
+  height: 24px;
 }
 
 .iconfont {
@@ -359,4 +363,89 @@ img {
 
 .green {
   color: #09BB07;
+}
+
+.c-h {
+  height: 45px;
+  line-height: 45px;
+  border-bottom: 1px solid #ccc;
+}
+.c-h .c-left .placeholder {
+  text-align: left;
+  padding-left: 5px;
+  width: 5rem;
+}
+.c-h .c-left .placeholder i {
+  font-size: 1rem !important;
+}
+.c-h .c-center .placeholder {
+  text-align: center;
+}
+.c-h .c-right .placeholder {
+  text-align: center;
+  width: 5rem;
+}
+.c-h .c-right .placeholder > a {
+  font-size: 0.875rem;
+}
+
+.c-name {
+  height: 1.875rem;
+  line-height: 1.875rem;
+}
+
+.c-firm {
+  border: 1px solid #70E670;
+  color: #70E670;
+  border-radius: 30px;
+  font-size: 1rem;
+}
+
+.b-line {
+  border-left: 1px solid #ccc;
+}
+
+.center {
+  text-align: center;
+}
+
+.f-left {
+  float: left;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.def {
+  background: darkgreen;
+  color: white;
+  padding: 2px 4px;
+}
+
+.gray {
+  background: #f9f9f9;
+}
+
+.width90 {
+  width: 90%;
+}
+
+.green {
+  color: #70E670;
+  border-radius: 5px;
+}
+
+.noMag {
+  display: block;
+  padding: 10px 0;
+  margin: 0 auto;
+}
+
+.lineBox {
+  display: inline-flex;
 }
