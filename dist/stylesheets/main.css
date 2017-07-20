@@ -376,15 +376,25 @@ img {
 }
 
 .green {
-  color: #70E670;
+  color: #09BB07;
   -webkit-border-radius: 5px;
   border-radius: 5px;
+}
+
+.wxGreen {
+  color: #09BB07;
+}
+
+.wxText {
+  font-size: 16px !important;
+  margin-left: 10px;
+  vertical-align: middle;
 }
 
 .red {
   color: red;
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 1rem;
   padding-bottom: 5px;
 }
 
