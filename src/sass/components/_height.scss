@@ -50,6 +50,19 @@
     font-size: rem(12);
 }
 
+.hideTextTwo {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.black {
+    color: #111111;
+    font-size: rem(16);
+}
+
 .hideText {
     font-size: rem(12);
 }
@@ -98,6 +111,12 @@
 .c-name {
     height: rem(30);
     line-height: rem(30);
+    font-size: rem(16);
+}
+
+.TheOrder {
+    margin-right: initial;
+    border-radius: 0;
 }
 
 .c-firm {
@@ -142,14 +161,24 @@
 }
 
 .green {
-    color: #70E670;
+    color: #09BB07;
     border-radius: 5px;
+}
+
+.wxGreen {
+    color: #09BB07;
+}
+
+.wxText {
+    font-size: 16px !important;
+    margin-left: 10px;
+    vertical-align: middle;
 }
 
 .red {
     color: red;
     text-align: center;
-    font-size: rem(12);
+    font-size: rem(16);
     padding-bottom: 5px;
 }
 

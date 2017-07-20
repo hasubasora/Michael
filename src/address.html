@@ -149,18 +149,16 @@
         })
     }
     document.addEventListener('click', function() {
-        var formName = $$("#formName").value; //名字
-        var sexs = document.getElementsByName('checkbox1');
-        var sex;
-        var tel = $$('#tel').value;
-        var city = $$('#addressOne').value; //省市区
-        var street = $$('#addressTwo').value; //街道
-        console.log('名字' + formName)
-        console.log(tel)
-        console.log(city + street)
-            // console.log(document.getElementsByName('checkbox1')[0].checked)
-            // console.log(document.querySelectorAll('.acs').length);
-        console.log(document.querySelector('#switchCP').checked);
+        var formName = $$("#formName").value, //名字
+            sexs = document.getElementsByName('checkbox1'),
+            tel = $$('#tel').value,
+            city = $$('#addressOne').value, //省市区
+            street = $$('#addressTwo').value, //街道
+            sex, //性别 0 是女 1 是男
+            acs, //标志 0是公司 1是学校 2是家
+            figs = $$('#switchCP').checked; //默认地址标示 
+        // console.log(document.getElementsByName('checkbox1')[0].checked)
+        // console.log(document.querySelectorAll('.acs').length);
         // 性别
         for (var s = 0; s < sexs.length; s++) {
             if (sexs[s].checked == true) {
@@ -169,11 +167,19 @@
             }
         }
         // 标志
-        for (var i = 0; i < document.querySelectorAll('.acs').length; i++) {
-            if (document.querySelectorAll('.acs')[i].className == 'act') {　　　　
-                console.log(document.querySelectorAll('.acs')[i].getAttribute('data-acs'))
+        for (var i = 0; i < $$$('.acs').length; i++) {
+            // console.log($$$('.acs')[i].classList.contains("act"));
+            if ($$$('.acs')[i].classList.contains("act")) {　　　　
+                console.log($$$('.acs')[i].getAttribute('data-acs'))
+                acs = $$$('.acs')[i].getAttribute('data-acs');
             }
         }
+        console.log('名字' + formName)
+        console.log('手机' + tel)
+        console.log('地址' + city + street)
+        console.log(sex)
+        console.log(acs)
+        console.log(figs);
 
         function $$(params) {
             return document.querySelector(params);
