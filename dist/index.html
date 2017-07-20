@@ -15,243 +15,215 @@
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
     <script src="framework/example/example.js"></script>
+    <script src="framework/vue.js"></script>
     <link rel="stylesheet" href="//at.alicdn.com/t/font_q3imcbbriu9xusor.css">
 </head>
 
 
 <body>
+    <div class="container">
+        <div class="page tabbar js_show ">
+            <div class="page__bd" style="height: 100%;">
+                <div class="weui-tab">
+                    <div class="weui-tab__panel">
 
-    <div class="page tabbar js_show ">
-        <div class="page__bd" style="height: 100%;">
-            <div class="weui-tab">
-                <div class="weui-tab__panel">
-                    <!--底部标签 中的内容  -->
-                    <!-- 搜索 -->
-                    <div class="page__bd">
-                        <!--<a href="javascript:;" class="weui-btn weui-btn_primary">点击展现searchBar</a>-->
-                        <div class="weui-search-bar" id="searchBar">
-                            <form class="weui-search-bar__form">
-                                <div class="weui-search-bar__box">
-                                    <i class="weui-icon-search"></i>
-                                    <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required/>
-                                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
-                                </div>
-                                <label class="weui-search-bar__label" id="searchText">
-                                        <i class="weui-icon-search"></i>
-                                        <span>搜索</span>
-                                    </label>
-                            </form>
-                            <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
-                        </div>
-                        <div class="weui-cells searchbar-result" id="searchResult" style="display: none;">
-                            <div class="weui-cell weui-cell_access">
-                                <div class="weui-cell__bd weui-cell_primary">
-                                    <p>实时搜索文本</p>
-                                </div>
-                            </div>
-                            <div class="weui-cell weui-cell_access">
-                                <div class="weui-cell__bd weui-cell_primary">
-                                    <p>实时搜索文本</p>
-                                </div>
-                            </div>
-                            <div class="weui-cell weui-cell_access">
-                                <div class="weui-cell__bd weui-cell_primary">
-                                    <p>实时搜索文本</p>
-                                </div>
-                            </div>
-                            <div class="weui-cell weui-cell_access">
-                                <div class="weui-cell__bd weui-cell_primary">
-                                    <p>实时搜索文本</p>
-                                </div>
-                            </div>
+
+                        <!-- 中心地带 -->
+                        <component v-bind:is="show"></component>
+
+
+                        <div class="weui-tabbar">
+                            <a v-for="(tabs,index) in buttonTab" v-bind:href="'#/'+tabs.link" class="weui-tabbar__item weui-bar__item_on">
+                                <span style="display: inline-block;position: relative;">
+                                <i :class=tabs.icon class="iconfont"></i>
+                                <p class="weui-tabbar__label"> {{tabs.title}}</p>
+                                <span v-if=index==3 class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>
+                                <span v-if=index==2 class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>
+                                </span>
+                            </a>
                         </div>
                     </div>
-                    <!-- 搜索 -->
-
-                    <script type="text/javascript">
-                        $(function() {
-                            var $searchBar = $('#searchBar'), //搜索整体
-                                $searchResult = $('#searchResult'), //下面的搜索出来的东西
-                                $searchText = $('#searchText'), //搜索
-                                $searchInput = $('#searchInput'), //搜索的input
-                                $searchClear = $('#searchClear'), //
-                                $searchCancel = $('#searchCancel'); //取消
-
-                            function hideSearchResult() {
-                                $searchResult.hide();
-                                $searchInput.val('');
-                            }
-
-                            function cancelSearch() {
-                                hideSearchResult();
-                                $searchBar.removeClass('weui-search-bar_focusing');
-                                $searchText.show();
-                            }
-
-                            $searchText.on('click', function() {
-                                $searchBar.addClass('weui-search-bar_focusing');
-                                $searchInput.focus();
-                            });
-                            $searchInput
-                                .on('blur', function() {
-                                    if (!this.value.length) cancelSearch();
-                                })
-                                .on('input', function() {
-                                    if (this.value.length) {
-                                        $searchResult.show();
-                                    } else {
-                                        $searchResult.hide();
-                                    }
-                                });
-                            $searchClear.on('click', function() {
-                                hideSearchResult();
-                                $searchInput.focus();
-                            });
-                            $searchCancel.on('click', function() {
-                                cancelSearch();
-                                $searchInput.blur();
-                            });
-                        });
-                    </script>
-                    <!--    -->
-                    <div class="page__bd">
-
-                        <div class="wx-line weui-loadmore weui-loadmore_line">
-                            <div class="wx-box">
-                                <strong class="wx-s wx-hold ">为你优选</strong>
-                                <small class="wx-s">发现更多好货</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 九宫格 -->
-                    <div class="weui-grids">
-                        <a href="javascript:;" class="weui-grid">
-                            <div class="weui-grid__icon">
-                                <img src="\framework\lg.jpg" alt="">
-                                <p class="ps " style="font-size:12px;">精晟小太阳悬浮式键54545盘电脑笔记本盘 </p>
-                                <button type="buttom" class="weui-btn  weui-btn_mini weui-btn_default">购购购购&nbsp;&gt;</button>
-                            </div>
-                        </a>
-                        <a href="javascript:;" class="weui-grid">
-                            <div class="weui-grid__icon">
-                                <img src="\framework\lg.jpg" alt="">
-                            </div>
-                            <p class="ps" style="font-size:12px;">精晟小太阳悬浮式键盘电脑笔记本盘 </p>
-                            <button type="buttom" class="weui-btn  weui-btn_mini weui-btn_default">购购购&nbsp;&gt;</button>
-                        </a>
-                        <a href="javascript:;" class="weui-grid">
-                            <div class="weui-grid__icon">
-                                <img src="\framework\lg.jpg" alt="">
-                            </div>
-                            <p class="ps" style="font-size:12px;">精晟小太阳悬浮式键盘电脑笔记本盘 </p>
-                            <button type="buttom" class="weui-btn  weui-btn_mini weui-btn_default">购购购&nbsp;&gt;</button>
-                        </a>
-                        <a href="javascript:;" class="weui-grid">
-                            <div class="weui-grid__icon">
-                                <img src="\framework\lg.jpg" alt="">
-                            </div>
-                            <p class="ps" style="font-size:12px;">精晟小太阳悬浮式键盘电脑笔记本盘 </p>
-                            <button type="buttom" class="weui-btn  weui-btn_mini weui-btn_default">购购购&nbsp;&gt;</button>
-                        </a>
-                        <a href="javascript:;" class="weui-grid">
-                            <div class="weui-grid__icon">
-                                <img src="\framework\lg.jpg" alt="">
-                            </div>
-                            <p class="ps" style="font-size:12px;">精晟小太阳悬浮式键盘电脑笔记本盘 </p>
-                            <button type="buttom" class="weui-btn  weui-btn_mini weui-btn_default">购购购&nbsp;&gt;</button>
-                        </a>
-                        <a href="javascript:;" class="weui-grid">
-                            <div class="weui-grid__icon">
-                                <img src="\framework\lg.jpg" alt="">
-                            </div>
-                            <p class="ps" style="font-size:12px;">精晟小太阳悬浮式键盘电脑笔记悬浮式键盘电脑笔记悬浮式键盘电脑笔记本盘 </p>
-                            <button type="buttom" class="weui-btn  weui-btn_mini weui-btn_default">购购购&nbsp;&gt;</button>
-                        </a>
-                        <a href="javascript:;" class="weui-grid">
-                            <div class="weui-grid__icon">
-                                <img src="\framework\lg.jpg" alt="">
-                            </div>
-                            <p class="ps" style="font-size:12px;">精晟小太盘电脑笔记本盘ｄｓｆｈｄｊｋｌ </p>
-                            <button type="buttom" class="weui-btn  weui-btn_mini weui-btn_default">购购购的&nbsp;&gt;</button>
-                        </a>
-                        <a href="javascript:;" class="weui-grid">
-                            <div class="weui-grid__icon">
-                                <img src="\framework\lg.jpg" alt="">
-                            </div>
-                            <p class="ps" style="font-size:12px;">精晟小式键盘电脑笔记本盘 </p>
-                            <button type="buttom" class="weui-btn  weui-btn_mini weui-btn_default">购购购&nbsp;&gt;</button>
-                        </a>
-                        <a href="javascript:;" class="weui-grid">
-                            <div class="weui-grid__icon">
-                                <img src="\framework\lg.jpg" alt="">
-                            </div>
-                            <p class="ps" style="font-size:12px;">精晟本盘 </p>
-                            <button type="buttom" class="weui-btn  weui-btn_mini weui-btn_default">购购购&nbsp;&gt;</button>
-                        </a>
-                    </div>
-                    <div class="page__bd">
-                        <!-- <div class="weui-loadmore">
-                            <i class="weui-loading"></i>
-                            <span class="weui-loadmore__tips">正在加载</span>
-                        </div> -->
-                        <!-- <div class="weui-loadmore weui-loadmore_line">
-                            <span class="weui-loadmore__tips">暂无数据</span>
-                        </div> -->
-                        <div class="weui-loadmore weui-loadmore_line weui-loadmore_dot">
-                            <span class="weui-loadmore__tips"></span>
-                        </div>
-                    </div>
-
-
-                    <!-- 中间部分的内容结尾 -->
-                </div>
-                <div class="weui-tabbar ">
-                    <a :href="#/hc" class="weui-tabbar__item weui-bar__item_on">
-                        <i class="iconfont icon-shouye green"></i>
-                        <p class="weui-tabbar__label">首页</p>
-                    </a>
-                    <a class="weui-tabbar__item">
-                        <i class="iconfont icon-fenlei"></i>
-                        <p class="weui-tabbar__label">分类</p>
-                    </a>
-                    <a href="javascript:;" class="weui-tabbar__item" data-id="input">
-                        <span style="display: inline-block;position: relative;">
-                           <i class="iconfont icon-icon"></i>
-                        <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>
-                        </span>
-                        <p class="weui-tabbar__label">购物车</p>
-                    </a>
-                    <a href="javascript:;" class="weui-tabbar__item">
-                        <span style="display: inline-block;position: relative;">
-                          <i class="iconfont icon-wode3"></i>
-                        <span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>
-                        </span>
-                        <p class="weui-tabbar__label">我</p>
-                    </a>
                 </div>
             </div>
         </div>
     </div>
 </body>
 
-<script type="text/html" id="tpl_input">
-    1111111111
+<script type="text/x-template" id="home">
+    <div class="page__bd">
+        <!--<a href="javascript:;" class="weui-btn weui-btn_primary">点击展现searchBar</a>-->
+        <div class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar__form">
+                <div class="weui-search-bar__box">
+                    <i class="weui-icon-search"></i>
+                    <input type="search" class="weui-search-bar__input" id="searchInput" @blur="searchInput" placeholder="搜索" required/>
+                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                </div>
+                <label class="weui-search-bar__label" id="searchText" @click="searchText">
+                    <i class="weui-icon-search"></i>
+                    <span>搜索</span>
+                </label>
+            </form>
+            <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+        </div>
+        <div class="weui-cells searchbar-result" id="searchResult" style="display: none;">
+            <div class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd weui-cell_primary">
+                    <p></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 搜索 -->
 </script>
+
 <script>
-    // console.log($('.ps').length)
-    const ps = $('.ps').length
-    for (var i = 0; i < ps; i++) {
-        var hs = $('.ps').height();
-        // console.log($('.ps').eq(i).text().length)
-        // console.log($('.ps').eq(i).height())
-        if ($('.ps').eq(i).text().length > 15) {
-            $('.ps').eq(i).text(($('.ps').eq(i).text().substring(0, 16)));
-            $('.ps').eq(i).html($('.ps').eq(i).html() + '...');
-            // $('.ps').eq(i).text(($('.ps').eq(i).text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, "...")))
+    window.onload = function() {
+        Vue.component('home', {
+            template: '#home', //用什么模板来渲染他
+            data: {
+                inputs: '11'
+            },
+            methods: { //事件操作
+
+                // var $searchBar = $('#searchBar'), //搜索整体
+                //     $searchResult = $('#searchResult'), //下面的搜索出来的东西
+                //     $searchText = $('#searchText'), //搜索
+                //     $searchInput = $('#searchInput'), //搜索的input
+                //     $searchClear = $('#searchClear'), //
+                //     $searchCancel = $('#searchCancel'); //取消
+                searchText: function() {
+                    $('#searchBar').addClass('weui-search-bar_focusing');
+                    $('#searchInput').focus();
+                },
+                hideSearchResult: function() {
+                    $searchResult.hide();
+                    $searchInput.val('');
+                },
+
+                cancelSearch: function() {
+                    hideSearchResult();
+                    $searchBar.removeClass('weui-search-bar_focusing');
+                    $searchText.show();
+                },
+
+                // $searchText.on('click', function() {
+                //     $searchBar.addClass('weui-search-bar_focusing');
+                //     $searchInput.focus();
+                // });
+                searchInput: function() {
+                    if (!this.value.length) cancelSearch();
+                }
+
+                // $searchInput
+                //     .on('blur', function() {
+                //         if (!this.value.length) cancelSearch();
+                //     })
+                //     .on('input', function() {
+                //         if (this.value.length) {
+                //             $searchResult.show();
+                //         } else {
+                //             $searchResult.hide();
+                //         }
+                //     });
+                // $searchClear.on('click', function() {
+                //     hideSearchResult();
+                //     $searchInput.focus();
+                // });
+                // $searchCancel.on('click', function() {
+                //     cancelSearch();
+                //     $searchInput.blur();
+                // });
+
+
+
+            }
+        });
+        Vue.component('fenlei', {
+            template: '<h2>我是分类</h2>' //用什么模板来渲染他
+        });
+        Vue.component('gouwuche', {
+            template: '<h2>我是购物车</h2>' //用什么模板来渲染他
+        });
+        Vue.component('my', {
+            template: '<h2>我是我</h2>' //用什么模板来渲染他
+        });
+
+
+        var agumon = new Vue({
+            el: '.container', //id 在这个盒子里面才能操作下面的东西
+            data: { //数据
+                show: 'home',
+                buttonTab: [{
+                    "link": "home",
+                    "title": "首页",
+                    "icon": "icon-shouye",
+                    "green": "true",
+                    "num": "1"
+                }, {
+                    "link": "fenlei",
+                    "title": "分类",
+                    "icon": "icon-fenlei",
+                    "green": "true",
+                    "num": "1"
+                }, {
+                    "link": "gouwuche",
+                    "title": "购物车",
+                    "icon": "icon-icon",
+                    "green": "true",
+                    "num": "1"
+                }, {
+                    "link": "my",
+                    "title": "我",
+                    "icon": "icon-wode3",
+                    "green": "true",
+                    "num": "1"
+                }]
+            },
+            computed: { //页面展示数据直接处理数据放出来
+
+            },
+            methods: { //事件操作
+                aaa: function() {
+                    alert(234)
+                }
+            }
+        });
+
+
+        function fouter() {
+            var str = location.hash;
+            str = str.slice(1);
+            str = str.replace(/^\//, '');
+            var map = {
+                zy: true,
+                rz: true,
+                xc: true,
+                lyb: true,
+                ss: true,
+                grd: true,
+                bzd: true,
+                home: true,
+                fenlei: true,
+                gouwuche: true,
+                my: true,
+
+            }
+            if (map[str]) {
+                agumon.show = str
+            } else {
+                agumon.show = 'home'
+            }
+            console.log(str)
         }
 
-    }
+        // window.addEventListener('hashChange', callback: EventListener, capture ? : boolean)
+        window.addEventListener('hashchange', fouter)
+
+
+    };
 </script>
 
 </html>
