@@ -50,6 +50,19 @@
     font-size: rem(12);
 }
 
+.hideTextTwo {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.black {
+    color: #111111;
+    font-size: rem(16);
+}
+
 .hideText {
     font-size: rem(12);
 }
@@ -98,6 +111,12 @@
 .c-name {
     height: rem(30);
     line-height: rem(30);
+    font-size: rem(16);
+}
+
+.TheOrder {
+    margin-right: initial;
+    border-radius: 0;
 }
 
 .c-firm {
@@ -149,7 +168,7 @@
 .red {
     color: red;
     text-align: center;
-    font-size: rem(12);
+    font-size: rem(14);
     padding-bottom: 5px;
 }
 

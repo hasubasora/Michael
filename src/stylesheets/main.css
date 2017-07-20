@@ -266,6 +266,19 @@ img {
   font-size: 0.75rem;
 }
 
+.hideTextTwo {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.black {
+  color: #111111;
+  font-size: 1rem;
+}
+
 .hideText {
   font-size: 0.75rem;
 }
@@ -308,6 +321,12 @@ img {
 .c-name {
   height: 1.875rem;
   line-height: 1.875rem;
+  font-size: 1rem;
+}
+
+.TheOrder {
+  margin-right: initial;
+  border-radius: 0;
 }
 
 .c-firm {
@@ -359,7 +378,7 @@ img {
 .red {
   color: red;
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   padding-bottom: 5px;
 }
 
