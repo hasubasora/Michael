@@ -199,7 +199,6 @@
                     </div>
 
 
-
                     <!-- 中间部分的内容结尾 -->
                 </div>
                 <div class="weui-tabbar ">
@@ -211,7 +210,7 @@
                         <i class="iconfont icon-fenlei"></i>
                         <p class="weui-tabbar__label">分类</p>
                     </a>
-                    <a href="javascript:;" class="weui-tabbar__item">
+                    <a href="javascript:;" class="weui-tabbar__item" data-id="input">
                         <span style="display: inline-block;position: relative;">
                            <i class="iconfont icon-icon"></i>
                         <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>
@@ -231,6 +230,39 @@
     </div>
 </body>
 
+<<<<<<< .mine
+<script type="text/html" id="tpl_input">
+    1111111111
+</script>
+<script>
+    // console.log($('.ps').length)
+    const ps = $('.ps').length
+    for (var i = 0; i < ps; i++) {
+        var hs = $('.ps').height();
+        // console.log($('.ps').eq(i).text().length)
+        // console.log($('.ps').eq(i).height())
+        if ($('.ps').eq(i).text().length > 15) {
+            $('.ps').eq(i).text(($('.ps').eq(i).text().substring(0, 16)));
+            $('.ps').eq(i).html($('.ps').eq(i).html() + '...');
+            // $('.ps').eq(i).text(($('.ps').eq(i).text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, "...")))
+        }
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
 
 
 </html>
