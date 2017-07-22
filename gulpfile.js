@@ -134,7 +134,7 @@ gulp.task('watch', function() {
         './src/**/*.scss',
         './src/**/*.js'
     ], function() {
-        return runSequence(['build'], ['reload'], ['minifyjs']);
+        return runSequence(['build'], ['minifyjs'], ['reload']);
     })
 });
 
