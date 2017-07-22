@@ -35,7 +35,7 @@
     margin: 0 auto;
 }
 
-.weui-btn_mini {
+.weui-btn_minio {
     display: block;
 }
 
@@ -75,10 +75,15 @@
     color: #09BB07;
 }
 
+.paddingBottom {
+    padding-bottom: 50px !important;
+}
+
 .c-h {
-    height: 45px;
-    line-height: 45px;
+    height: 50px;
+    line-height: 50px;
     border-bottom: 1px solid #ccc;
+    width: 100%;
     .c-left {
         .placeholder {
             text-align: left;
@@ -206,4 +211,29 @@
     border-radius: 30px;
     padding: 0px 8px;
     color: #ccc;
+}
+
+.colorRed {
+    color: red;
+}
+
+.colorBlack {
+    color: black;
+}
+
+.font {
+    font-size: .8em;
+}
+
+.money {
+    line-height: 36px;
+    text-align: left;
+}
+
+.bord {
+    padding: 5px;
+}
+
+.margin {
+    margin: 0 10px;
 }
