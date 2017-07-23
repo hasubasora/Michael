@@ -233,6 +233,11 @@ img {
   color: #111;
 }
 
+.white {
+  color: white;
+  padding: 5px;
+}
+
 .weui-grids {
   background: white;
 }
