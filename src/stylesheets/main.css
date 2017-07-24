@@ -296,6 +296,10 @@ img {
   color: #09BB07;
 }
 
+.grays {
+  color: #999999;
+}
+
 .paddingBottom {
   padding-bottom: 50px !important;
 }
@@ -451,4 +455,8 @@ img {
 
 .margin {
   margin: 0 10px;
+}
+
+.weui-bar__item_on i.iconfont {
+  color: #09BB07;
 }

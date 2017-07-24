@@ -236,6 +236,11 @@ img {
   color: #111;
 }
 
+.white {
+  color: white;
+  padding: 5px;
+}
+
 .weui-grids {
   background: white;
 }
@@ -292,6 +297,10 @@ img {
 
 .green {
   color: #09BB07;
+}
+
+.grays {
+  color: #999999;
 }
 
 .paddingBottom {
@@ -457,4 +466,8 @@ img {
 
 .margin {
   margin: 0 10px;
+}
+
+.weui-bar__item_on i.iconfont {
+  color: #09BB07;
 }
