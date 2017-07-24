@@ -299,10 +299,6 @@ img {
   color: #09BB07;
 }
 
-.grays {
-  color: #999999;
-}
-
 .paddingBottom {
   padding-bottom: 50px !important;
 }
@@ -466,58 +462,4 @@ img {
 
 .margin {
   margin: 0 10px;
-}
-
-.weui-bar__item_on i.iconfont {
-  color: #09BB07;
-}
-
-.fons {
-  font-size: 13px !important;
-}
-
-.reds {
-  color: red;
-  font-size: 14px;
-  padding-top: 5px;
-}
-
-.inputNum {
-  width: 25px;
-  height: 25px;
-  background: white;
-  border: 1px solid #999;
-  color: #999;
-}
-
-.goodsImg {
-  height: 100%;
-  width: 100%;
-}
-
-.swiper-container {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  -moz-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  -moz-box-align: center;
-  align-items: center;
 }
