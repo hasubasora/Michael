@@ -43,12 +43,14 @@
                 <router-view></router-view>
                 <div class="weui-tabbar">
                     <router-link v-for="(tabs,index) in buttonTab"  :to="tabs.link" class="weui-tabbar__item" :class="{'weui-bar__item_on':tabs.green}">
-                        <span style="display: inline-block;position: relative;width: 100%;"  @click="sub(index)">
+                        <div  @click="sub(index)">
+                        <span style="display: inline-block;position: relative;" >
                         <i :class=tabs.icon class="iconfont"></i>
                         <p class="weui-tabbar__label"> {{tabs.title}}</p>
-                        <span v-if=index==2 class="weui-badge" style="position: absolute;top: -2px;right: 20px;">{{tabs.num}}</span>
-                        <span v-if=index==3 class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: 30px;"></span>
+                        <span v-if=index==2 class="weui-badge" style="position: absolute;top: -2px;right: -2px;">{{tabs.num}}</span>
+                        <span v-if=index==3 class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -2px;"></span>
                         </span>
+                       </div>
                     </router-link>
                 </div>
             </div>
