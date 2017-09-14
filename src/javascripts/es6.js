@@ -1,5 +1,29 @@
-'use static';
+'use static'; {
+    // 数组变量
+    let [a, b, c, d] = ['1', '2', '3', '4'];
+    console.info(d)
+        //对象变量
+    let {
+        foo, //foo=foo:foo,后面foo可改
+        bar
+    } = {
+        foo: "aaa",
+        bar: "bbb"
+    };
+    console.info(foo)
+        // 默认值
+    var { x = 3 } = {};
+    // x // 3
 
+    var { x, y = 5 } = { x: 1 };
+    // x // 1
+    // y // 5
+    //输出长度
+    let {
+        length: len
+    } = ['1', '2', '3', '4', '5'];
+    console.info(len)
+}
 //模板字符串
 {
     let bao = '鲍',
@@ -17,6 +41,7 @@
 
 // 判断一个字符串里面是不是包含其他字符串
 {
+    let to = "今天吃早餐！"
     console.log(
         // 1.以某个字符串开头的
         to.startsWith('今天'), //返回是 true
@@ -72,13 +97,15 @@
     var backs2 = function backs2(des) {
         return des;
     }
-    let backs3 = (des, des2) => des + des2;
-    let backs5 = (des, des2) => {
-        return des + des2;;
-    };
 
+    let backs3 = (des, des2) => des + des2;
+
+    let backs5 = (des, des2) => {
+        // 还有其他判断
+        return des + des2;
+    };
     // 普通函数写法
-    var backs4 = function backs4(des) {
+    var backs4 = function backs4(des, des2) {
         return des + des2;
     }
 }
@@ -92,7 +119,7 @@
         drink,
         backs() {} //等于 backs:function(){}
     }
-    console, log(food)
+    console.log(food) //back:()dessert:"cart"drink:"hede"
 }
 
 //输出带空格的对象名字
@@ -119,11 +146,12 @@
     Object.is(-0, N + 0) //false
 }
 
-// 一个对象的属性赋值到另一个对象Object.assign(‘接收者，目标’，‘赋值的元素’)
+// 一个对象的属性赋值到另一个对象Object.assign(接收者，{目标:目标}，‘目标:赋值的元素新值’)
 {
     let backs = {}
     Object.assign(backs, {
-        drink: 'cha'
+        drink: 'cha',
+        color: 'red'
     }, {
         drink: '会覆盖上面'
     })
